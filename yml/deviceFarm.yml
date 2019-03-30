@@ -10,9 +10,9 @@ phases:
       # You can switch to an alternate supported version from 1.6.5, 1.7.1, 1.7.2, 1.8.0 , 1.8.1, 1.9.1 by using a command like "avm 1.7.1"
       # OR
       # To install a newer version of Appium use the following commands:
-      # - export APPIUM_VERSION=1.8.1
-      # - avm $APPIUM_VERSION
-      # - ln -s /usr/local/avm/versions/$APPIUM_VERSION/node_modules/.bin/appium  /usr/local/avm/versions/$APPIUM_VERSION/node_modules/appium/bin/appium.js
+      - export APPIUM_VERSION=1.9.1
+      - avm $APPIUM_VERSION
+      - ln -s /usr/local/avm/versions/$APPIUM_VERSION/node_modules/.bin/appium  /usr/local/avm/versions/$APPIUM_VERSION/node_modules/appium/bin/appium.js
       
       # By default the ruby version installed is 2.5.3
       - rvm use 2.5.3
@@ -49,7 +49,7 @@ phases:
       - >-
         appium --log-timestamp --device-name $DEVICEFARM_DEVICE_NAME
         --platform-name $DEVICEFARM_DEVICE_PLATFORM_NAME --app $DEVICEFARM_APP_PATH
-        --udid $DEVICEFARM_DEVICE_UDID --chromedriver-executable $DEVICEFARM_CHROMEDRIVER_EXECUTABLE  >> $DEVICEFARM_LOG_DIR/appiumlog.txt 2>&1 &
+        --udid $DEVICEFARM_DEVICE_UDID  >> $DEVICEFARM_LOG_DIR/appiumlog.txt 2>&1 &
       
       - >-
         start_appium_timeout=0;
@@ -83,7 +83,7 @@ phases:
       # Modify/Enter the command below to start the tests. The comamnd should be similar to what you use to run the tests locally.
       # "bundle exec" is a Bundle command to execute a script in the context of the current bundle.
       # For e.g. assuming you run your tests locally using command "ruby YOUR_TEST_FILENAME.rb.", to run your ruby tests using bundle exec command you can use:
-      - bundle exec ruby YOUR_TEST_FILENAME.rb
+      - bundle exec rspec spec/test.rb
 
   # The post test phase includes are commands that are run after your tests are executed.
   post_test:

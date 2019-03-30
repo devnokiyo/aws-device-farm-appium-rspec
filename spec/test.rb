@@ -84,7 +84,7 @@ def dialog_message
     return nil if find_elements(:id, id).empty?
     find_element(:id, id).value
   else
-    id = 'message'
+    id = 'android:id/message'
     return nil if find_elements(:id, id).empty?
     find_element(:id, id).text
   end
@@ -96,7 +96,7 @@ def tap_ok
   if ios?
     find_element(:id, "OK").click
   else
-    find_element(:id, "button2").click
+    find_element(:id, "android:id/button2").click
   end
 end
 
